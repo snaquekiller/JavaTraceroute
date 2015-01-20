@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewController">
+    <stylesheets>
+        <URL value="@view.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="label" layoutX="177.0" layoutY="56.0" prefHeight="131.0" prefWidth="465.0" text="Welcome to this amazing project " textFill="#e40d0d">
+         <font>
+            <Font name="System Bold Italic" size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="start" layoutX="294.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="88.0" prefWidth="200.0" text="Start" textAlignment="CENTER" textFill="#262628">
+         <font>
+            <Font size="37.0" />
+         </font>
+         <effect>
+            <Lighting bumpInput="$null">
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+   </children>
+</AnchorPane>

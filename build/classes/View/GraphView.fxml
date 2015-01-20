@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewController">
+    <stylesheets>
+        <URL value="@view.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="Back" blendMode="DIFFERENCE" layoutX="694.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleButtonAction2" prefHeight="42.0" prefWidth="74.0" text="Back" />
+      <Button fx:id="Again" blendMode="EXCLUSION" layoutX="363.0" layoutY="536.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" text="Again" />
+      <BorderPane layoutX="42.0" layoutY="39.0" prefHeight="472.0" prefWidth="726.0">
+         <opaqueInsets>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+         </opaqueInsets>
+      </BorderPane>
+   </children>
+</AnchorPane>
