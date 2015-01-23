@@ -9,10 +9,10 @@ package Model;
  *
  * @author NicolasG
  */
-public class Noeud {
+public class Node {
     
-    private Noeud pere = null;
-    private Noeud Fils= null;
+    private Node pere = null;
+    private Node Fils= null;
     private Ip ip;
     
     
