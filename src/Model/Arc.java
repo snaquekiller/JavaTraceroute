@@ -10,24 +10,36 @@ package Model;
  * @author Hassane
  */
 public class Arc {
-    Node from;
-    Node to ;
-    
-    public Arc(Node from, Node to)
-    {
-    this.from=from;
-    this.to=to;
-    
+
+    public Node from;
+    public Node to;
+
+    public Arc(Node from, Node to) {
+        this.from = from;
+        this.to = to;
+
     }
-    
-    public Node get_from()
-    {
-    
-    return from;
+
+    public Node get_from() {
+
+        return from;
     }
-    public Node get_to()
-    {
-    return to;
-    
+
+    public Node get_to() {
+        return to;
+
+    }
+
+    @Override
+    public boolean equals(Object e) {
+        if (e instanceof Arc == true) {
+            Arc a = (Arc) e;
+            if (a.from == this.from && a.to == this.to) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
     }
 }

@@ -10,7 +10,12 @@ package Model;
  * @author NicolasG
  */
 public class Ip {
+
     private String ip;
+
+    public Ip(String tabb) {
+        this.ip = tabb;
+    }
 
     public String getIp() {
         return ip;
@@ -20,8 +25,4 @@ public class Ip {
         this.ip = ip;
     }
 
-    public Ip(String ip) {
-        this.ip = ip;
-    }
-    
 }

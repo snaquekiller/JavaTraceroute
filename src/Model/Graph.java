@@ -8,142 +8,145 @@ package Model;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author Hassane
  */
 public class Graph {
-    
-    public List<Node> Graph=new LinkedList<Node>();
-    public List<Arc> Arcs= new LinkedList<Arc>();
-     public Graph(List<Node> tab)
-    {
-        
-        Graph=tab;
+
+    public List<Node> Graph = new LinkedList<Node>();
+    public HashSet<Arc> Arcs = new HashSet();
+
+    public Graph(List<Node> tab) {
+
+        Graph = tab;
     }
-      public Graph() throws IOException
-    {
-        
+
+    public Graph() throws IOException {
+
         Get_Adresses();
     }
-    
-    void add_node(String ip_node)
-    {
-    Graph.add(new Node(ip_node));
-    
+
+    void add_node(String ip_node) {
+        Graph.add(new Node(ip_node));
+
     }
-    public void Get_Adresses() throws IOException
-    {
-    String line = "";
-    String line2 = null;
-    String[] tab = new String[20];
-    LinkedList<Node> tab2=new LinkedList<Node>();            
-      
 
-            Process run = Runtime.getRuntime().exec("java -jar ./lib/fakeroute.jar www.google.com");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(run.getInputStream()));
-            while ((line = reader.readLine()) != null) {
-      
-                line = line.replaceAll(" ", "/");
-                
-                
-                tab = line.split("/");
-                for (int i = 0; i < tab.length; i++) {
+    public void Get_Adresses() throws IOException {
+        String line = "";
+        String line2 = null;
+        String[] tab = new String[20];
+        LinkedList<Node> tab2 = new LinkedList<Node>();
 
-                    int temp = tab[i].split("\\.").length;
-                    if (temp == 4) {
-                        if(tab[i].contains("(")==false)
-                        {
-                        tab2.add(new Node(tab[i]));
-                        }
-                    }
+        Process run = Runtime.getRuntime().exec("java -jar ./lib/fakeroute.jar www.google.com");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(run.getInputStream()));
+        Pattern p = Pattern.compile("\\d{1,3}\\.\\d{1,3}.\\d{1,3}\\.\\d{1,3}");
+        Matcher m;
+        LinkedList<LinkedList<Node>> array = new LinkedList<>();
+
+        while ((line = reader.readLine()) != null) {
+            LinkedList< Node> tmps = new LinkedList<>();
+
+            String[] tabb = line.split(" ");
+            line2=line2+line+"\n";
+            for (int i = 0; i < tabb.length; i++) { 
+                
+                m = p.matcher(tabb[i]);
+                if (m.matches() == true) {
+                      
+                    tmps.add(new Node(tabb[i]));
                 }
-             
-            } 
-      Initilize_Graph(tab2);
-     
-    }
-    
-    void Initilize_Graph(LinkedList<Node> table)
-    {
-        ListIterator<Node> l= table.listIterator();
-        int index ;
-        while (l.hasNext())
-            
-        {   
-            
-            Node node=l.next();
-           
-            check_node(node);
-            check_arc(node,table);
-        
+            }
+            array.add(tmps);
+
         }
-       
-        
-    
+        System.out.println(line2);
+
+        Initilize_Graph(array);
+
     }
-    void check_node(Node node)
-            
-    {
-    boolean found=false;
-    ListIterator<Node> l= Graph.listIterator();
-    
-    while (l.hasNext() && found==false)
-        
-    {
-    
-        if(l.next().get_ip()==node.get_ip())
-        {
-        found=true;
+
+    void Initilize_Graph(LinkedList<LinkedList<Node>> table) {
+        ListIterator<LinkedList<Node>> l = table.listIterator();
+        LinkedList<Node> l2;
+        while (l.hasNext()) {
+            l2 = l.next();
+            ListIterator<Node> list_node = l2.listIterator();
+            int index = table.indexOf(l2);
+            System.out.println("INDEXXXX:" + index);
+            while (list_node.hasNext()) {
+                Node node = list_node.next();
+
+                check_node(node);
+                check_arc(node, table, index);
+
+            }
+
+        }
+
+    }
+
+    void check_node(Node node) {
+        boolean found = false;
+        ListIterator<Node> l = Graph.listIterator();
+
+        while (l.hasNext() && found == false) {
+
+            if (l.next().get_ip() == node.get_ip()) {
+                found = true;
+            }
+        }
+        if (found == false) {
+            Graph.add(node);
+
         }
     }
-    if(found==false)
-    {
-    Graph.add(node);
-    
-    }
-    }
-    
-    void check_arc(Node node,List<Node> list){
-    int pos_node =list.indexOf(node);
-    Node node_from;
-    Node node_to= list.get(pos_node);
-    ListIterator<Arc> l= Arcs.listIterator();
-    boolean arc_found=false;
-    if(pos_node!=0)
-    {
-    node_from=list.get(pos_node-1); 
-            
-    }
-    else {
-        
-    node_from= new Node("start");
-    }
-    
-    while(l.hasNext() && arc_found==false)
-    {
-        Arc arc=l.next();
-        
-        if(arc.get_from().get_ip()==node_from.get_ip() && arc.get_to().get_ip()==node_to.get_ip())
-        {
-        arc_found=true;
-        
+
+    void check_arc(Node node, LinkedList<LinkedList<Node>> list, int index) {
+        // list which store very parent node
+        LinkedList<Node> nodes_from = new LinkedList<>();
+        ListIterator<Node> l2 = nodes_from.listIterator();
+
+        boolean arc_found = false;
+        if (index != 0) {
+            for (int i = 0; i < list.get(index - 1).size(); i++) {
+                nodes_from.add(list.get(index - 1).get(i));
+            }
+
+        } else {
+            nodes_from.add(new Node("start"));
+
         }
-    
+
+        for (int i = 0; i < nodes_from.size(); i++) {
+            Arcs.add(new Arc(nodes_from.get(i), node));
+
+        }
+        /*  while (l2.hasNext()) {
+         Node from = l2.next();
+         // search the arc we have to create, if he already exists.
+         ListIterator<Arc> l = Arcs.listIterator();
+         while (l.hasNext() && arc_found == false) {
+         Arc arc = l.next();
+         if (arc.get_from().get_ip() == from.get_ip() && arc.get_to().get_ip() == node.get_ip()) {
+         arc_found = true;
+         }
+         }
+            
+         // we dont found the arc so we create it and add it
+         if (arc_found == false) {
+         Arcs.add(new Arc(from, node));
+         }
+         arc_found = false;
+         }*/
+
     }
-    if(arc_found==false)
-    {
-    Arcs.add(new Arc(node_from,node_to));
-    
-    }
-    
-    
-    
-    
-    }
-    
+
 }
