@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
@@ -46,6 +47,8 @@ public class ViewController implements Initializable {
     @FXML
     private Button Again;
     @FXML
+    private Pane pane;
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         
     System.out.println("You clicked me!"); 
@@ -58,6 +61,7 @@ public class ViewController implements Initializable {
             scene=new Scene ((Parent)Loader.load());
             Stage stage =  (Stage) start.getScene().getWindow(); 
             stage.setScene(scene);
+            
             
         } catch (IOException ex) {
             Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);

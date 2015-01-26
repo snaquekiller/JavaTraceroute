@@ -5,18 +5,51 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author NicolasG
  */
 public class Node {
     
-    private Node pere = null;
-    private Node Fils= null;
+     //private Node_List pere = null;
+    private List<Node> Fils= new ArrayList<Node>();
     private Ip ip;
     
+    public Node(String ip)
+    {
+ this.ip=new Ip(ip);
+    
+    }
+    
+    public void add_fils(String ip_fils)
+    {
+   Fils.add(new Node (ip_fils));
+  
+    }
+    
+    public List<Node> get_fils()        
+    {
+    List<Node> list= new ArrayList<Node>();
+    for(int i=0;i<Fils.size();i++){
+        
+        list.add(Fils.get(i));
+    }
+    return list;
+    }
+    
+    public Ip get_ip()
+    {
+    return ip;
+    
+    }
     
     
     
+    }
     
-}
+    
+    
+
