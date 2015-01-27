@@ -64,7 +64,9 @@ public class Trace_route_FXML extends Application {
 
         }
 
-        System.out.println("************  Arcs 2 ********\n");
+       System.out.println("************  Arcs 2 ********\n");
+    
+        
         Iterator<Arc> list = test.Arcs.iterator();
         int i =0;
         while(list.hasNext()){
@@ -72,6 +74,7 @@ public class Trace_route_FXML extends Application {
             System.out.println("ARC N°" + i + " :\n  From :" + a.get_from().get_ip().getIp() + "\n  To :" + a.get_to().get_ip().getIp() + "\n");
             i++;
         }
+        
     
 
             

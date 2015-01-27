@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Objects;
+
 /**
  *
  * @author Hassane
@@ -34,12 +36,21 @@ public class Arc {
     public boolean equals(Object e) {
         if (e instanceof Arc == true) {
             Arc a = (Arc) e;
-            if (a.from == this.from && a.to == this.to) {
-                return true;
-            }else{
-                return false;
-            }
+       if(a.from.equals(this.from)&& a.to.equals(this.to))
+       {return true;}
         }
         return false;
+        }
+    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.from);
+        hash = 97 * hash + Objects.hashCode(this.to);
+        return hash;
     }
+
+    
+    
 }

@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Objects;
+
 /**
  *
  * @author NicolasG
@@ -23,6 +25,27 @@ public class Ip {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    @Override
+    public boolean equals(Object e) {
+        if (e instanceof Ip == true) {
+            Ip a = (Ip) e;
+            if (a.getIp().equalsIgnoreCase(this.ip)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.ip);
+        return hash;
     }
 
 }

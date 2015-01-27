@@ -7,6 +7,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -41,5 +42,30 @@ public class Node {
         return ip;
 
     }
+    
+    @Override
+    public boolean equals(Object e)
+    {  if (e instanceof Node == true) {
+            Node a = (Node) e;
+            if (a.get_ip().getIp().equalsIgnoreCase(this.ip.getIp())) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
+    
+    
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.ip);
+        return hash;
+    }
+
+    
 
 }

@@ -31,7 +31,7 @@ public class Graph {
 
     public Graph() throws IOException {
 
-        Get_Adresses();
+       Get_Adresses();
     }
 
     void add_node(String ip_node) {
@@ -129,23 +129,7 @@ public class Graph {
             Arcs.add(new Arc(nodes_from.get(i), node));
 
         }
-        /*  while (l2.hasNext()) {
-         Node from = l2.next();
-         // search the arc we have to create, if he already exists.
-         ListIterator<Arc> l = Arcs.listIterator();
-         while (l.hasNext() && arc_found == false) {
-         Arc arc = l.next();
-         if (arc.get_from().get_ip() == from.get_ip() && arc.get_to().get_ip() == node.get_ip()) {
-         arc_found = true;
-         }
-         }
-            
-         // we dont found the arc so we create it and add it
-         if (arc_found == false) {
-         Arcs.add(new Arc(from, node));
-         }
-         arc_found = false;
-         }*/
+        
 
     }
 
