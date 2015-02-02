@@ -8,15 +8,28 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author NicolasG
  */
+@XmlRootElement(name = "Node")
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Node {
 
+    public Node() {
+    }
+
     //private Node_List pere = null;
+    @XmlElement(name = "Fils")
     private List<Node> Fils = new ArrayList<Node>();
+    @XmlElement(name = "IP")
     private Ip ip;
 
     public Node(String ip) {
@@ -29,25 +42,40 @@ public class Node {
 
     }
 
+    public List<Node> getFils() {
+        return Fils;
+    }
+
+    public void setFils(List<Node> Fils) {
+        this.Fils = Fils;
+    }
+
+    public Ip getIp() {
+        return ip;
+    }
+
+    public void setIp(Ip ip) {
+        this.ip = ip;
+    }
+
     public List<Node> get_fils() {
         List<Node> list = new ArrayList<Node>();
         for (int i = 0; i < Fils.size(); i++) {
-
             list.add(Fils.get(i));
         }
         return list;
     }
 
-    public Ip get_ip() {
+    /*public Ip get_ip() {
         return ip;
 
-    }
+    }*/
     
     @Override
     public boolean equals(Object e)
     {  if (e instanceof Node == true) {
             Node a = (Node) e;
-            if (a.get_ip().getIp().equalsIgnoreCase(this.ip.getIp())) {
+            if (a.getIp().getIp().equalsIgnoreCase(this.ip.getIp())) {
                 return true;
             } else {
                 return false;

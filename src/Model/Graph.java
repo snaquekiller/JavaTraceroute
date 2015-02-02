@@ -14,19 +14,44 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Hassane
  */
+@XmlRootElement (name = "Graph_Total")
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Graph {
-
+    @XmlElement (name = "Graphs")
     public List<Node> Graph = new LinkedList<Node>();
+    @XmlElement (name = "Arcs")
     public HashSet<Arc> Arcs = new HashSet();
 
     public Graph(List<Node> tab) {
 
         Graph = tab;
+    }
+
+    public List<Node> getGraph() {
+        return Graph;
+    }
+
+    public void setGraph(List<Node> Graph) {
+        this.Graph = Graph;
+    }
+
+    public HashSet<Arc> getArcs() {
+        return Arcs;
+    }
+
+    public void setArcs(HashSet<Arc> Arcs) {
+        this.Arcs = Arcs;
     }
 
     public Graph() throws IOException {
@@ -99,7 +124,7 @@ public class Graph {
 
         while (l.hasNext() && found == false) {
 
-            if (l.next().get_ip() == node.get_ip()) {
+            if (l.next().getIp() == node.getIp()) {
                 found = true;
             }
         }
