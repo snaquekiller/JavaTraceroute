@@ -13,21 +13,21 @@ import java.util.Objects;
  */
 public class Arc {
 
-    public Node from;
-    public Node to;
+    public Node_Model from;
+    public Node_Model to;
 
-    public Arc(Node from, Node to) {
+    public Arc(Node_Model from, Node_Model to) {
         this.from = from;
         this.to = to;
 
     }
 
-    public Node get_from() {
+    public Node_Model get_from() {
 
         return from;
     }
 
-    public Node get_to() {
+    public Node_Model get_to() {
         return to;
 
     }
