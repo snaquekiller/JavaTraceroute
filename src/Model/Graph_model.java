@@ -67,13 +67,13 @@ public class Graph_model {
         System.out.println(array.size());
         while ((line = reader.readLine()) != null) {
             LinkedList< Node_Model> tmps = new LinkedList<>();
-
+            line = line.replace("\\s+", " ");
             String[] tabb = line.split(" ");
             line2 = line2 + line + "\n";
             for (int i = 0; i < tabb.length; i++) {
 
                 m = p.matcher(tabb[i]);
-                if (m.matches() == true) {
+                if (m.matches() == true || tabb[i].equals("*")) {
                     counter++;
                     tmps.add(new Node_Model(tabb[i], "Node" + String.valueOf(counter)));
                 }

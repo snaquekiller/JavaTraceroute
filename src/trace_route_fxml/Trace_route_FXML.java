@@ -10,11 +10,9 @@ import Model.Graph_model;
 import java.io.File;
 import java.io.IOException;
 
-
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -39,12 +37,12 @@ public class Trace_route_FXML extends Application {
     public void start(Stage stage) {
         try {
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                Platform.exit();
-                System.exit(0);
-            }
-        }); 
+                @Override
+                public void handle(WindowEvent t) {
+                    Platform.exit();
+                    System.exit(0);
+                }
+            });
             FXMLLoader Loader = new FXMLLoader();
             Loader.setLocation(getClass().getResource("/View/MainView.fxml"));
             Parent root = (Parent) Loader.load();
@@ -63,19 +61,10 @@ public class Trace_route_FXML extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException 
-    {
-      
-        
+    public static void main(String[] args) throws IOException {
+
         System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
         launch(args);
- 
-        
 
-
-      
-        
-        
-    
-}
+    }
 }

@@ -165,13 +165,11 @@ public class ViewController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb
-    ) {
+    public void initialize(URL url, ResourceBundle rb) {
 
     }
 
-    void set_graph(Graph_model graph
-    ) {
+    void set_graph(Graph_model graph) {
         this.graph = graph;
 
     }
