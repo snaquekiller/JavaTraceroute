@@ -60,11 +60,15 @@ public class Trace_route_FXML extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, JAXBException {
         launch(args);
 
-        Graph test = new Graph();
+        //Graph test = new Graph();
+        Graph test;
+          
+            test = unMarshalingExample();
 
+        test.add_fils_with_arc();
         System.out.println("*********  NOEUDS 1 ********\n");
         for (int i = 0; i < test.Graph.size(); i++) {
             System.out.println(test.Graph.get(i).getIp().getIp());
@@ -80,6 +84,7 @@ public class Trace_route_FXML extends Application {
             System.out.println("ARC N°" + i + " :\n  From :" + a.getFrom().getIp().getIp() + "\n  To :" + a.getTo().getIp().getIp() + "\n");
             i++;
         }
+        
         try {
             marshalingExample(test);
         } catch (JAXBException ex) {
@@ -106,7 +111,7 @@ public class Trace_route_FXML extends Application {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
         //We had written this file in marshalling example
-        Graph grap = (Graph) jaxbUnmarshaller.unmarshal(new File("c:/temp/employees.xml"));
+        Graph grap = (Graph) jaxbUnmarshaller.unmarshal(new File("C:/Windows/Temp/graph.xml"));
         return grap;
     }
     
