@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewController">
+    <stylesheets>
+        <URL value="@view.css" />
+    </stylesheets>
+   <children>
+      <Label blendMode="EXCLUSION" layoutX="205.0" layoutY="32.0" prefHeight="87.0" prefWidth="92.0" text="Zoom +   " textFill="#fff8f8">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="107.0" fitWidth="52.0" layoutX="300.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@mouse_top.png" />
+         </image>
+      </ImageView>
+      <Label blendMode="EXCLUSION" layoutX="205.0" layoutY="136.0" prefHeight="87.0" prefWidth="92.0" text="Zoom -   " textFill="#fff8f8">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="107.0" fitWidth="52.0" layoutX="300.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@mouse_down.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="87.0" fitWidth="129.0" layoutX="333.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fleches.png" />
+         </image>
+      </ImageView>
+      <Label blendMode="EXCLUSION" layoutX="138.0" layoutY="261.0" prefHeight="68.0" prefWidth="188.0" text="Move on the Graph" textFill="#fff8f8">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Text layoutX="8.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The graph View may be muddled ( espacially if you show ip adresses) , so dont hesitate to used the Zoom function in order to haave a better experience. Thank You." textAlignment="CENTER" wrappingWidth="577.13671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

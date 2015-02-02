@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Mouse_Wheel;
 import Model.Arc;
 import Model.Graph_model;
 import Model.Node_Model;
@@ -28,6 +29,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -41,7 +43,7 @@ import org.graphstream.ui.layout.springbox.implementations.SpringBox;
 import org.graphstream.ui.swingViewer.View;
 import org.graphstream.ui.swingViewer.Viewer;
 import org.graphstream.ui.swingViewer.Viewer.ThreadingModel;
-import trace_route_fxml.Trace_route_FXML;
+
 
 /**
  * FXML Controller class
@@ -77,6 +79,11 @@ public class ViewController implements Initializable {
     @FXML
     private CheckBox ip;
 
+    @FXML
+    
+    private Button help;
+    @FXML
+    private Button Clear;
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException, InterruptedException {
 
@@ -130,26 +137,117 @@ public class ViewController implements Initializable {
 
             }
         } else if (event.getSource() == Saveb) {
-            System.out.println("dqsdq \n");
-            try {
-                Save(graph);
+            if(graph!=null)
+            {
+             try {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Open Graph File");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("XML ", "*.xml*"),
+                        new FileChooser.ExtensionFilter("All Fichier", "*")
+                );
+                File fil = fileChooser.showSaveDialog(new Stage());
+                if (fil != null) {
+                    Save(graph, fil);
+                }
             } catch (JAXBException ex) {
                 Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else if (event.getSource() == Loadb) {
-            System.out.println("sdq \n");
-            try {
-                graph = GetXml();
+             
+        }
+        }
+        else if (event.getSource() == Loadb) {
+        try {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save File");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("XML ", "*.xml*"),
+                        new FileChooser.ExtensionFilter("All Fichier", "*")
+                );
+                File fil = fileChooser.showOpenDialog(new Stage());
+                if (fil != null) {
+                    graph = GetXml(fil);
+                    do_graph();
+                    counter++;
+                }
             } catch (JAXBException ex) {
                 Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+          else if(event.getSource()==Go)
+    {   ip.setSelected(false);
+       if(counter==0)
+       {
+           System.out.println("First time");
+        graph=new Graph_model(ip_field.getText());
+    do_graph();
+    counter++;
+       }
+       else
+       {
+           System.out.println("Second time");
+       graph.Get_Adresses(ip_field.getText());
+       graph_screen.clear();
+       do_graph();
+       counter++;
+       }
+    }
+    else if(event.getSource()==ip)
+    { // Show ip if box selected
+        if(ip.isSelected())
+        {
+        System.out.println("Explorons \n");
+    Iterator<Node> k =  graph_screen.getNodeIterator();
+
+    while (k.hasNext()) {
+      
+     Node next=k.next();
+             next.addAttribute("ui.label", next.getAttribute("Ip").toString());
+      
 
     }
+      
+    }
+        else if(!ip.isSelected())
+    {
+           System.out.println("Explorons \n");
+    Iterator<Node> k =  graph_screen.getNodeIterator();
 
+    while (k.hasNext()) {
+      
+     Node next=k.next();
+             next.addAttribute("ui.label", " ");
+      
+
+    }
+    
+    }
+       
+    }
+      else if(event.getSource()==help)
+      {
+          System.out.println("Salut");
+        Loader.setLocation(getClass().getResource("/View/HelpFXML.fxml"));  
+          scene=new Scene ((Parent)Loader.load()); 
+          Stage stage = new Stage();
+          stage.setScene(scene);
+          stage.show();
+      
+      }
+      else if(event.getSource()==Clear)
+      {   ip.setSelected(false);
+          
+      
+      graph_screen.clear();
+      graph=null;
+      counter=0;
+      }
+  
+    } 
+   
+  
     @FXML
-    private void handleButtonAction2(ActionEvent event
-    ) {
+    private void handleButtonAction2(ActionEvent event ) {
         if (event.getSource() == Back) {
             FXMLLoader Loader = new FXMLLoader();
             try {
@@ -171,27 +269,27 @@ public class ViewController implements Initializable {
 
     }
 
-    void set_graph(Graph_model graph) {
+    public void set_graph(Graph_model graph) {
         this.graph = graph;
 
     }
 
-    void do_graph() throws IOException {
-        System.out.println("salut");
-
-        System.out.println("salut");
-        graph_screen = new SingleGraph("Graph_Ip_Route");
+   
+       
+    
+    public void do_graph() throws IOException
+    {
+        
+     
+         
+        graph_screen= new SingleGraph("Graph_Ip_Route");
         graph_screen.setAttribute("layout.quality", 4);
-        // graph_screen.display(false);
-        //graph_screen.setStrict(false);
-        //graph_screen.setAutoCreate(true);
+        
         for (int i = 0; i < graph.Graph.size(); i++) {
             Node_Model node = graph.Graph.get(i);
             graph_screen.addNode(node.getName());
             graph_screen.getNode(node.getName()).addAttribute("Ip", node.get_ip().getIp());
-            // graph_screen.getNode(node.getName()).addAttribute("layout.frozen");
             graph_screen.getNode(node.getName()).setAttribute("layout.weight", 100);
-            //  graph_screen.getNode(node.getName()).addAttribute("xy",1+i, 1+i);
             System.out.println(node.getName());
         }
 
@@ -243,7 +341,7 @@ public class ViewController implements Initializable {
 
     }
 
-    private static void Save(Graph_model graphh) throws JAXBException {
+    private static void Save(Graph_model graphh, File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Graph_model.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -253,15 +351,15 @@ public class ViewController implements Initializable {
         jaxbMarshaller.marshal(graphh, System.out);
 
         //Marshal the employees list in file
-        jaxbMarshaller.marshal(graphh, new File("C:/Windows/Temp/graph.xml"));
+        jaxbMarshaller.marshal(graphh, file);
     }
 
-    private static Graph_model GetXml() throws JAXBException {
+     private static Graph_model GetXml(File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Graph_model.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
         //We had written this file in marshalling example
-        Graph_model grap = (Graph_model) jaxbUnmarshaller.unmarshal(new File("C:/Windows/Temp/graph.xml"));
+        Graph_model grap = (Graph_model) jaxbUnmarshaller.unmarshal(file);
         return grap;
     }
 }

@@ -5,9 +5,7 @@
  */
 package trace_route_fxml;
 
-import Model.Arc;
-import Model.Graph_model;
-import java.io.File;
+
 import java.io.IOException;
 
 import java.util.Iterator;
@@ -22,10 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+
 
 /**
  *
