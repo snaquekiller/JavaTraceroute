@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Hassane/Desktop/JavaTraceroute/JavaTraceroute/src/Model/Ip.java</file>
             <file>file:/C:/Users/Hassane/Desktop/JavaTraceroute/JavaTraceroute/src/Model/Node_Model.java</file>
             <file>file:/C:/Users/Hassane/Desktop/JavaTraceroute/JavaTraceroute/src/Controller/ViewController.java</file>
             <file>file:/C:/Users/Hassane/Desktop/JavaTraceroute/JavaTraceroute/src/Model/Arc.java</file>
             <file>file:/C:/Users/Hassane/Desktop/JavaTraceroute/JavaTraceroute/src/Model/Graph_model.java</file>
             <file>file:/C:/Users/Hassane/Desktop/JavaTraceroute/JavaTraceroute/src/trace_route_fxml/Trace_route_FXML.java</file>
+=======
+            <file>file:/C:/Users/NicolasG/Dropbox/ING%204/S2/JAVAavancer/JavaTraceroute/src/Model/Arc.java</file>
+            <file>file:/C:/Users/NicolasG/Dropbox/ING%204/S2/JAVAavancer/JavaTraceroute/src/Controller/ViewController.java</file>
+            <file>file:/C:/Users/NicolasG/Dropbox/ING%204/S2/JAVAavancer/JavaTraceroute/src/Model/Graph.java</file>
+            <file>file:/C:/Users/NicolasG/Dropbox/ING%204/S2/JAVAavancer/JavaTraceroute/src/trace_route_fxml/Trace_route_FXML.java</file>
+            <file>file:/C:/Users/NicolasG/Dropbox/ING%204/S2/JAVAavancer/JavaTraceroute/src/Model/Ip.java</file>
+            <file>file:/C:/Users/NicolasG/Dropbox/ING%204/S2/JAVAavancer/JavaTraceroute/src/Model/Node.java</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>

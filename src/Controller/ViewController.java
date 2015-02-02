@@ -9,6 +9,7 @@ package Controller;
 import Model.Arc;
 import Model.Graph_model;
 import Model.Node_Model;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
@@ -29,6 +30,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
@@ -37,6 +42,7 @@ import org.graphstream.ui.layout.springbox.implementations.SpringBox;
 import org.graphstream.ui.swingViewer.View;
 import org.graphstream.ui.swingViewer.Viewer;
 import org.graphstream.ui.swingViewer.Viewer.ThreadingModel;
+import trace_route_fxml.Trace_route_FXML;
 
 
 
@@ -245,7 +251,42 @@ pane.getChildren().add(swingNode);
       
    
 }
+     private void save()
+    {
+    
+   /* try {
+        // 
+            marshalingExample(graph);
+        } catch (JAXBException ex) {
+            Logger.getLogger(Trace_route_FXML.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("ARC N°" + i + " :\n  From :" + test.Arcs. get(i).get_from().get_ip().getIp() + "\n  To :" + test.Arcs.get(i).get_to().get_ip().getIp() + "\n");
+    }
+
+    private static void marshalingExample(Graph_model graphh) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Graph_model.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        //Marshal the employees list in console
+        jaxbMarshaller.marshal(graphh, System.out);
+
+        //Marshal the employees list in file
+        jaxbMarshaller.marshal(graphh, new File("C:/Windows/Temp/graph.xml"));
+    }
+
+    private static Graph_model unMarshalingExample() throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Graph_model.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+
+        //We had written this file in marshalling example
+        Graph_model grap = (Graph_model) jaxbUnmarshaller.unmarshal(new File("C:/Windows/Temp/graph.xml"));
+        return grap;
+    }*/
+    }
+}
 
    
 
-}
+

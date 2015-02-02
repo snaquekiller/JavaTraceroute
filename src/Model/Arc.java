@@ -6,15 +6,26 @@
 package Model;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  *
  * @author Hassane
  */
+@XmlRootElement(name = "Arc")
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Arc {
 
-    public Node_Model from;
-    public Node_Model to;
+    @XmlElement(name = "From")
+     public Node_Model from;
+    @XmlElement(name = "To")
+  
+   public Node_Model to;
+    
 
     public Arc(Node_Model from, Node_Model to) {
         this.from = from;
@@ -23,6 +34,18 @@ public class Arc {
     }
 
     public Node_Model get_from() {
+    
+    return from;
+    }
+    public void setFrom(Node_Model from) {
+        this.from = from;
+    }
+
+    public void setTo(Node_Model to) {
+        this.to = to;
+    }
+
+    public Node_Model getFrom() {
 
         return from;
     }
@@ -32,16 +55,19 @@ public class Arc {
 
     }
 
+    public Arc() {
+    }
+
     @Override
     public boolean equals(Object e) {
         if (e instanceof Arc == true) {
             Arc a = (Arc) e;
-       if(a.from.equals(this.from)&& a.to.equals(this.to))
-       {return true;}
+            if (a.from.equals(this.from) && a.to.equals(this.to)) {
+                return true;
+            }
         }
         return false;
-        }
-    
+    }
 
     @Override
     public int hashCode() {
@@ -51,6 +77,4 @@ public class Arc {
         return hash;
     }
 
-    
-    
 }

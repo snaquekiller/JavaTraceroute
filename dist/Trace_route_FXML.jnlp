@@ -11,6 +11,7 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="Trace_route_FXML.jar" size="30886" download="eager" />
     <jar href="lib/gs-algo-1.2-javadoc.jar" size="1038616" download="eager" />
     <jar href="lib/gs-algo-1.2.jar" size="318295" download="eager" />
@@ -18,6 +19,9 @@
     <jar href="lib/gs-core-1.2.jar" size="887096" download="eager" />
     <jar href="lib/gs-ui-1.2-javadoc.jar" size="1176158" download="eager" />
     <jar href="lib/gs-ui-1.2.jar" size="7474970" download="eager" />
+=======
+    <jar href="Trace_route_FXML.jar" size="12816" download="eager" />
+>>>>>>> origin/master
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Trace_route_FXML" >
     <param name="requiredFXVersion" value="2.2+"/>

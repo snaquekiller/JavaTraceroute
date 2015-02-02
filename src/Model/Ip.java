@@ -6,13 +6,20 @@
 package Model;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author NicolasG
  */
+@XmlRootElement (name = "IP_p")
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Ip {
 
+    @XmlElement (name = "IP")
     private String ip;
 
     public Ip(String tabb) {
@@ -23,6 +30,10 @@ public class Ip {
         return ip;
     }
 
+    public Ip() {
+    }
+
+    
     public void setIp(String ip) {
         this.ip = ip;
     }

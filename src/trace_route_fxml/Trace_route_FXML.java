@@ -7,10 +7,13 @@ package trace_route_fxml;
 
 import Model.Arc;
 import Model.Graph_model;
+import java.io.File;
 import java.io.IOException;
 
 
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import javafx.application.Application;
@@ -21,6 +24,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -57,43 +64,18 @@ public class Trace_route_FXML extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException 
-    
+    {
+      
         
-       /* Iterator<Arc> list = test.Arcs.iterator();
-        int i =0;
-        while(list.hasNext()){
-            Arc a = list.next();
-            System.out.println("ARC N°" + i + " :\n  From :" + a.get_from().get_ip().getIp() + "\n  To :" + a.get_to().get_ip().getIp() + "\n");
-            i++;
-        }*/ {
-       /* Graph_model test = new Graph_model("google.com"); System.out.println("************  Arcs 2 ********\n");
-        Iterator<Arc> list = test.Arcs.iterator();
-        int i =0;
-        while(list.hasNext()){
-            Arc a = list.next();
-            System.out.println("ARC N°" + i + " :\n  From :" + a.get_from().get_ip().getIp() + "\n  To :" + a.get_to().get_ip().getIp() + "\n");
-            i++;
-        }*/
         System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
         launch(args);
  
         
 
-       /* System.out.println("*********  NOEUDS 1 ********\n");
-        for (int i = 0; i < test.Graph.size(); i++) {
-            System.out.println(test.Graph.get(i).get_ip().getIp());
-
-        }*/
 
       
         
-    
-
-            
-        //System.out.println("ARC N°" + i + " :\n  From :" + test.Arcs. get(i).get_from().get_ip().getIp() + "\n  To :" + test.Arcs.get(i).get_to().get_ip().getIp() + "\n");
-
         
-
-    }
-
+    
+}
 }
