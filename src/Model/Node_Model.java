@@ -8,20 +8,30 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author NicolasG
  */
+@XmlRootElement(name = "Node_Model")
+@XmlAccessorType (XmlAccessType.FIELD)
 public class Node_Model {
 
     //private Node_List pere = null;
    //private List<Node_Model> Fils = new ArrayList<Node_Model>();
+    
+    @XmlElement(name = "Ip")
     private Ip ip;
 
     public String getName() {
         return name;
     }
+    
+    @XmlElement(name = "Name")
     private String name;
     public Node_Model(String ip,String name) {
         this.ip = new Ip(ip);
