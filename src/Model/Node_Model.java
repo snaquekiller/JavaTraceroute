@@ -30,6 +30,17 @@ public class Node_Model {
     public String getName() {
         return name;
     }
+
+    public Node_Model() {
+    }
+
+    public Ip getIp() {
+        return ip;
+    }
+
+    public void setIp(Ip ip) {
+        this.ip = ip;
+    }
     
     @XmlElement(name = "Name")
     private String name;

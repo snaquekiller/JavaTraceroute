@@ -49,6 +49,38 @@ public class Graph_model {
     public Graph_model() {
     }  
 
+    public List<Node_Model> getGraph() {
+        return Graph;
+    }
+
+    public void setGraph(List<Node_Model> Graph) {
+        this.Graph = Graph;
+    }
+
+    public HashSet<Arc> getArcs() {
+        return Arcs;
+    }
+
+    public void setArcs(HashSet<Arc> Arcs) {
+        this.Arcs = Arcs;
+    }
+
+    public String getAddress_route() {
+        return address_route;
+    }
+
+    public void setAddress_route(String address_route) {
+        this.address_route = address_route;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
     public void Get_Adresses(String ip_to_route) throws IOException {
 
         String line = "";

@@ -69,9 +69,9 @@ public class ViewController implements Initializable {
     @FXML
     private Button Go;
     @FXML
-    private Button Save_b;
+    private Button Saveb;
     @FXML
-    private Button Load_b;
+    private Button Loadb;
     @FXML
     private TextField ip_field;
     @FXML
@@ -129,13 +129,15 @@ public class ViewController implements Initializable {
                 }
 
             }
-        } else if (event.getSource() == Save_b) {
+        } else if (event.getSource() == Saveb) {
+            System.out.println("dqsdq \n");
             try {
                 Save(graph);
             } catch (JAXBException ex) {
                 Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else if (event.getSource() == Load_b) {
+        } else if (event.getSource() == Loadb) {
+            System.out.println("sdq \n");
             try {
                 graph = GetXml();
             } catch (JAXBException ex) {
