@@ -41,6 +41,10 @@ public class Node {
         Fils.add(new Node(ip_fils));
 
     }
+    
+    public void add_fils(Node fils) {
+        Fils.add(fils);
+    }
 
     public List<Node> getFils() {
         return Fils;
