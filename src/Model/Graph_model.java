@@ -119,7 +119,7 @@ public class Graph_model {
         Initilize_Graph(array);
 
     }
-
+// Methode that intialize the graph woth the right nodes and arcs
     void Initilize_Graph(LinkedList<LinkedList<Node_Model>> table) {
         ListIterator<LinkedList<Node_Model>> l = table.listIterator();
         LinkedList<Node_Model> l2;
@@ -130,11 +130,11 @@ public class Graph_model {
             int index = table.indexOf(l2);
             ListIterator<Node_Model> list_node = l2.listIterator();
 
-            System.out.println(table.get(counter).size());
+           
 
             while (list_node.hasNext()) {
                 Node_Model node = list_node.next();
-                System.out.println("INDEX while " + index);
+               
                 check_node(node);
                 check_arc(node, table, index);
 
@@ -143,7 +143,7 @@ public class Graph_model {
         }
 
     }
-
+// Check if Node exists , if it doesnt the methode add it 
     void check_node(Node_Model node) {
         boolean found = false;
         ListIterator<Node_Model> l = Graph.listIterator();
@@ -160,7 +160,7 @@ public class Graph_model {
 
         }
     }
-
+// Chech if an arc exists if , it doesn't the method add it
     void check_arc(Node_Model node, LinkedList<LinkedList<Node_Model>> list, int index) {
         // list which store very parent node
         LinkedList<Node_Model> nodes_from = new LinkedList<>();
@@ -172,7 +172,7 @@ public class Graph_model {
             }
 
         } else {
-            System.out.println("Ajout Index 0");
+           
             check_node(new Node_Model("Node_Start", "Host"));
             nodes_from.add(new Node_Model("Node_Start", "Host"));
 

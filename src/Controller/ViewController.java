@@ -84,14 +84,16 @@ public class ViewController implements Initializable {
     private Button help;
     @FXML
     private Button Clear;
+    
+    // Event Button method
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException, InterruptedException {
 
-        System.out.println("You clicked me!");
+       
         FXMLLoader Loader = new FXMLLoader();
         if (event.getSource() == start) {
             try {
-                System.out.println("You clicked me1!");
+                
                 Loader.setLocation(getClass().getResource("/View/GraphView.fxml"));
                 scene = new Scene((Parent) Loader.load());
                 Stage stage = (Stage) start.getScene().getWindow();
@@ -101,12 +103,12 @@ public class ViewController implements Initializable {
             }
         } else if (event.getSource() == Go) {
             if (counter == 0) {
-                System.out.println("First time");
+               
                 graph = new Graph_model(ip_field.getText());
                 do_graph();
                 counter++;
             } else {
-                System.out.println("Second time");
+                
                 graph.Get_Adresses(ip_field.getText());
                 graph_screen.clear();
                 do_graph();
@@ -114,7 +116,7 @@ public class ViewController implements Initializable {
             }
         } else if (event.getSource() == ip) { // Show ip if box selected
             if (ip.isSelected()) {
-                System.out.println("Explorons \n");
+                
                 Iterator<Node> k = graph_screen.getNodeIterator();
 
                 while (k.hasNext()) {
@@ -125,7 +127,7 @@ public class ViewController implements Initializable {
                 }
 
             } else if (!ip.isSelected()) {
-                System.out.println("Explorons \n");
+                
                 Iterator<Node> k = graph_screen.getNodeIterator();
 
                 while (k.hasNext()) {
@@ -136,7 +138,9 @@ public class ViewController implements Initializable {
                 }
 
             }
-        } else if (event.getSource() == Saveb) {
+            
+        } //Save 
+        else if (event.getSource() == Saveb) {
             if(graph!=null)
             {
              try {
@@ -156,6 +160,7 @@ public class ViewController implements Initializable {
              
         }
         }
+        //Load
         else if (event.getSource() == Loadb) {
         try {
                 FileChooser fileChooser = new FileChooser();
@@ -178,14 +183,14 @@ public class ViewController implements Initializable {
     {   ip.setSelected(false);
        if(counter==0)
        {
-           System.out.println("First time");
+           
         graph=new Graph_model(ip_field.getText());
     do_graph();
     counter++;
        }
        else
        {
-           System.out.println("Second time");
+           
        graph.Get_Adresses(ip_field.getText());
        graph_screen.clear();
        do_graph();
@@ -196,13 +201,14 @@ public class ViewController implements Initializable {
     { // Show ip if box selected
         if(ip.isSelected())
         {
-        System.out.println("Explorons \n");
+        
     Iterator<Node> k =  graph_screen.getNodeIterator();
 
     while (k.hasNext()) {
       
      Node next=k.next();
-             next.addAttribute("ui.label", next.getAttribute("Ip").toString());
+     // Show ip
+     next.addAttribute("ui.label", next.getAttribute("Ip").toString());
       
 
     }
@@ -210,13 +216,14 @@ public class ViewController implements Initializable {
     }
         else if(!ip.isSelected())
     {
-           System.out.println("Explorons \n");
+           
     Iterator<Node> k =  graph_screen.getNodeIterator();
 
     while (k.hasNext()) {
       
      Node next=k.next();
-             next.addAttribute("ui.label", " ");
+     // Hide Ip
+      next.addAttribute("ui.label", " ");
       
 
     }
@@ -226,7 +233,7 @@ public class ViewController implements Initializable {
     }
       else if(event.getSource()==help)
       {
-          System.out.println("Salut");
+          //Load View
         Loader.setLocation(getClass().getResource("/View/HelpFXML.fxml"));  
           scene=new Scene ((Parent)Loader.load()); 
           Stage stage = new Stage();
@@ -245,13 +252,13 @@ public class ViewController implements Initializable {
   
     } 
    
-  
+  // Event Function to come back to the first page
     @FXML
     private void handleButtonAction2(ActionEvent event ) {
         if (event.getSource() == Back) {
             FXMLLoader Loader = new FXMLLoader();
             try {
-                System.out.println("You clicked me2!");
+                
 
                 Loader.setLocation(getClass().getResource("/View/MainView.fxml"));
 
@@ -276,7 +283,7 @@ public class ViewController implements Initializable {
 
    
        
-    
+  // Create the visual graph from the model  
     public void do_graph() throws IOException
     {
         
@@ -284,7 +291,7 @@ public class ViewController implements Initializable {
          
         graph_screen= new SingleGraph("Graph_Ip_Route");
         graph_screen.setAttribute("layout.quality", 4);
-        
+        //Creating the graphical nodes 
         for (int i = 0; i < graph.Graph.size(); i++) {
             Node_Model node = graph.Graph.get(i);
             graph_screen.addNode(node.getName());
@@ -295,6 +302,7 @@ public class ViewController implements Initializable {
 
         Iterator<Arc> list = graph.Arcs.iterator();
         int i = 0;
+        // Creating  the graphical edges ( arcs)
         while (list.hasNext()) {
 
             Arc a = list.next();
@@ -305,6 +313,7 @@ public class ViewController implements Initializable {
             i++;
 
         }
+        //CSS for the graph and nodes
         graph_screen.addAttribute("ui.stylesheet", "node {\n"
                 + "    size: 20px, 20px ;\n"
                 + "    fill-mode: image-scaled; \n"
@@ -324,12 +333,12 @@ public class ViewController implements Initializable {
                 + "arrow-size : 50px,50px;\n"
                 + "}"
         );
-
+      //Threading for the graph
         Viewer viewer = new Viewer(graph_screen, ThreadingModel.GRAPH_IN_SWING_THREAD);
         SpringBox layout = new SpringBox(false, new Random(0));
         viewer.enableAutoLayout(layout);
         View view = viewer.addDefaultView(false);
-
+        //Adding mouse listener
         view.addMouseWheelListener(new Mouse_Wheel(view));
 
         pipe = viewer.newViewerPipe();
@@ -337,10 +346,11 @@ public class ViewController implements Initializable {
         SwingNode swingNode = new SwingNode();
         view.getCamera().setViewPercent(0.5);
         swingNode.setContent(view);
+        // ADDING SWING ELEMENT TO THE javaFx eelement grace to swingnode
         pane.getChildren().add(swingNode);
 
     }
-
+//Methode that saves the graph
     private static void Save(Graph_model graphh, File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Graph_model.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
@@ -353,7 +363,7 @@ public class ViewController implements Initializable {
         //Marshal the employees list in file
         jaxbMarshaller.marshal(graphh, file);
     }
-
+// Method that load the graph 
      private static Graph_model GetXml(File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Graph_model.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();

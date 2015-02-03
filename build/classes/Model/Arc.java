@@ -26,13 +26,13 @@ public class Arc {
   
    public Node_Model to;
     
-
+// Constructor 
     public Arc(Node_Model from, Node_Model to) {
         this.from = from;
         this.to = to;
 
     }
-
+ 
     public Node_Model get_from() {
     
     return from;

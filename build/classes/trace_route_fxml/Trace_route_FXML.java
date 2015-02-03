@@ -8,9 +8,7 @@ package trace_route_fxml;
 
 import java.io.IOException;
 
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -45,7 +43,7 @@ public class Trace_route_FXML extends Application {
             stage.setTitle("Trace Route Project");
 
             stage.setScene(scene);
-            //stage.setScene(scene);
+           
             stage.show();
         } catch (Exception a) {
 
@@ -57,7 +55,7 @@ public class Trace_route_FXML extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-
+      // import nedeed for the graph 
         System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
         launch(args);
 
